@@ -1,10 +1,17 @@
 const express = require('express');
 const path = require('path');
-const db = require('./db/db.json');
 const fs = require('fs');
+
+const { v4: uuidv4 } = require('uuid');
+
+console.log(uuidv4());
 
 const app = express();
 const PORT = 3001;
+
+let db = JSON.parse(fs.readFileSync('db/db.json', 'utf-8', (err) => {
+  if(err) throw console.log(err);
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,14 +24,21 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
-app.get('/api/notes', (req, res) =>
+app.get('/api/notes', (req, res) => 
   res.json(db)
 );
 
 app.post('/api/notes', (req, res) =>{
+  const noteSaved = req.body;
+  noteSaved.id = uuidv4();
   console.log(req.body)
-  res.send(req.body)
-  db.push(req.body)
+  db.push(noteSaved);
+
+  fs.writeFileSync('db/db.json', JSON.stringify(db), (err) => {
+    if(err) throw console.log(err);
+  } )
+  res.send(noteSaved);
+  
 });
 
 app.get('*', (req, res) =>
