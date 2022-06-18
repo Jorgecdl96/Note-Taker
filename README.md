@@ -32,7 +32,7 @@ The Package json is already added in this project, so you should only have to to
 
 ## Usage
 
-Run this project writing in your terminal 'node index.js' and then answer all the questions prompted to get a Team Profile generated withing 'dist' folder.
+Run this project writing in your terminal 'node server.js' and then answer all the questions prompted to get a Team Profile generated withing 'dist' folder.
 
 ## License
 
@@ -74,3 +74,9 @@ You can send an e-mail to Jorgecdl96@gmail.com for any additional question.
 
 ## App Deployed
 
+URL Link: https://secret-eyrie-33204.herokuapp.com
+
+
+![Note-taker1](Assets/Note-taker1.png)
+
+![Note-taker2](./Assets/Note-taker2.png)
