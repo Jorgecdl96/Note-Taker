@@ -4,8 +4,6 @@ const fs = require('fs');
 
 const { v4: uuidv4 } = require('uuid');
 
-console.log(uuidv4());
-
 const app = express();
 const PORT = 3001;
 
@@ -27,7 +25,6 @@ app.get('/api/notes', (req, res) =>
 app.post('/api/notes', (req, res) =>{
   const noteSaved = req.body;
   noteSaved.id = uuidv4();
-  console.log(req.body)
   db.push(noteSaved);
 
   fs.writeFileSync('db/db.json', JSON.stringify(db));
