@@ -32,7 +32,7 @@ The Package json is already added in this project, so you should only have to to
 
 ## Usage
 
-Run this project writing in your terminal 'node server.js' and then answer all the questions prompted to get a Team Profile generated withing 'dist' folder.
+Click on URL Link: https://secret-eyrie-33204.herokuapp.com and start adding events you want to save in your application.
 
 ## License
 
