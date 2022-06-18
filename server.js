@@ -9,13 +9,9 @@ console.log(uuidv4());
 const app = express();
 const PORT = 3001;
 
-let db = JSON.parse(fs.readFileSync('db/db.json', 'utf-8', (err) => {
-  if(err) throw console.log(err);
-}));
+let db = JSON.parse(fs.readFileSync('db/db.json', 'utf-8'));
 
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/', (req, res) => res.send('Get Started'));
@@ -34,9 +30,7 @@ app.post('/api/notes', (req, res) =>{
   console.log(req.body)
   db.push(noteSaved);
 
-  fs.writeFileSync('db/db.json', JSON.stringify(db), (err) => {
-    if(err) throw console.log(err);
-  } )
+  fs.writeFileSync('db/db.json', JSON.stringify(db));
   res.send(noteSaved);
   
 });
